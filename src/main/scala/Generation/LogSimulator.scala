@@ -47,3 +47,4 @@ class LogMsgSimulator(val initstate:Tuple2[RandomStringGenerator,String]):
         x
       })(inputState._1)
       ProduceLogMessage(nextState, counter - 1, useCounter)
+

@@ -16,6 +16,8 @@ resolvers += Resolver.jcenterRepo
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-core" % logbackVersion,
   "ch.qos.logback" % "logback-classic" % logbackVersion,
+  "com.amazonaws" % "aws-java-sdk" % "1.12.90",
+  "com.amazonaws" % "aws-java-sdk-s3" % "1.12.98",
   "org.slf4j" % "slf4j-api" % sfl4sVersion,
   "com.typesafe" % "config" % typesafeConfigVersion,
   "commons-io" % "commons-io" % apacheCommonIOVersion,
