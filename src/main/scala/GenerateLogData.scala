@@ -39,6 +39,7 @@ object GenerateLogData:
     val init = unit(INITSTRING)
     val BUCKET_NAME = config.getString("BUCKET_NAME")
     val FILE_PATH = config.getString("FILE_PATH")
+    val FILE_PATH_WITH_DATE = FILE_PATH + java.time.LocalDate.now() + ".log"
     val FILE_NAME = config.getString("FILE_NAME")
     val logFuture = Future {
       LogMsgSimulator(init(RandomStringGenerator((Parameters.minStringLength, Parameters.maxStringLength), Parameters.randomSeed)), Parameters.maxCount)
@@ -51,7 +52,7 @@ object GenerateLogData:
       val amazonS3Client = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_2).build
       // upload file
       logger.info("Preparing to upload the file...")
-      val file = new File(FILE_PATH)
+      val file = new File(FILE_PATH_WITH_DATE)
       amazonS3Client.putObject(BUCKET_NAME, FILE_NAME, file)
       logger.info("File uploaded successfully")
     }
